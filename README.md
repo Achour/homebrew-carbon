@@ -11,6 +11,11 @@ That installs the latest release into `/Applications` and clears the quarantine
 flag, so the app opens without the Gatekeeper prompt an unsigned download would
 otherwise trigger.
 
+Homebrew won't load a cask from a third-party tap until you trust it. Installing
+one by name counts as trusting it, so the line above is all you need — but a
+read-only command like `brew info --cask carbon` will refuse until you've either
+installed it or run `brew trust achour/carbon`.
+
 To update:
 
 ```sh
