@@ -19,8 +19,12 @@ installed it or run `brew trust achour/carbon`.
 To update:
 
 ```sh
-brew upgrade --cask carbon
+brew update && brew upgrade --cask carbon
 ```
+
+The `brew update` is load-bearing. Homebrew only re-pulls a tap once its last
+auto-update is a day old, so a bare `brew upgrade` can read a stale copy of this
+cask and tell you the latest version is already installed.
 
 Carbon tells you when there's a new version — a banner in the sidebar and
 Settings → About → Check for updates — and shows this command when it can see
