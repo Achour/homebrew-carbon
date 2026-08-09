@@ -4,9 +4,9 @@ cask "carbon" do
   # version and both sha256s are rewritten by the release workflow in
   # Achour/carbon (.github/workflows/release.yml). Keep them on these exact
   # lines — that job anchors its sed on them and fails loudly if they move.
-  version "0.1.17"
-  sha256 arm:   "9a1c18ead6ddb8cea587a05fd0f778c155b16c1f5fc08f19018e06396029b37b",
-         intel: "2aebb6b62844f8b761901e8abefab430e67c6d7e5dc4cf300c0da3fb3253896f"
+  version "0.1.18"
+  sha256 arm:   "e974393b3626cb114d11afd7d9b6ddb5f0244677be396aa946fbd461668e1947",
+         intel: "df13c70e44080b40159f388fc246d5ab3452075775c64d19b9063dbfeab44d6f"
 
   url "https://github.com/Achour/carbon/releases/download/v#{version}/Carbon-#{version}-#{arch}.dmg"
   name "Carbon"
