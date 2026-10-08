@@ -36,8 +36,16 @@ cask "carbon" do
   # `-c` (clear all) rather than `-d com.apple.quarantine`: deleting a named
   # attribute exits non-zero on any file that doesn't carry it, which under `-r`
   # is most of them, and `system_command` would fail the install.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/Carbon.app"]
+  #
+  # `postflight_steps`, not a `postflight` block: Homebrew 7 deprecates the
+  # block form and prints a warning on every install and upgrade, in the middle
+  # of output that reads as a failure. A step's `run` is sandboxed, so the app
+  # bundle has to be declared writable or `xattr` changes nothing.
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           ["-cr", "{{appdir}}/Carbon.app"],
+        writable_paths: ["Carbon.app"],
+        writable_base:  :appdir
   end
 
   uninstall quit: "com.achour.carbon"
